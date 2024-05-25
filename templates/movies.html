@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ movie.title }}</h2>
+    <p>{{ movie.description }}</p>
+<img src="{{ url_for('static', filename='images/ptsir.jpg') }}"
+    class="image"/>
+
+    <h3>Showtimes</h3>
+    <ul>
+        {% for showtime in movie.showtimes %}
+            <li>
+                <a href="{{ url_for('book_showtime', showtime_id=showtime.id) }}">{{ showtime.time }}</a>
+                <a href="{{ url_for('booking_status', showtime_id=showtime.id) }}">View Booking Status</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
